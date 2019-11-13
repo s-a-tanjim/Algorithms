@@ -17,7 +17,7 @@
 | Bucket Sort | O(n) | - | - |
 | Counting Sort | O(n) | - | - |
 | Heap Sort | O(Log(n)) | - | - |
-| Merge Sort | O(nLog(n)) | - | - |
-| Quick Sort | O(nLog(n)) | - | - |
+| Merge Sort | O(nLog(n)) | O(n) (Not InPlace) | - |
+| Quick Sort | O(nLog(n)) | O(log n) (In Place) | - |
 | Radix Sort | O(n) | - | - |
 | Selection Sort | O(n^2) | - | - |

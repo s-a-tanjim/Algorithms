@@ -7,23 +7,25 @@ The Merge(arr, start, mid, end) is key process that assumes that arr[start..mid]
 are sorted and merges the two sorted sub-arrays into one.
 
 Properties:
-  Time Complexity: O(nLog n)
-  Auxiliary Space: O(n)
-  Algorithmic Paradigm: Divide and Conquer
-  Sorting In Place: No in a typical implementation
-  Stable: Yes
+-Time Complexity: O(nLog n)
+-Space Complexity: O(n) (Not InPlace)
+-Algorithmic Paradigm: Divide and Conquer
+-Sorting In Place: No in a typical implementation
+-Stable: Yes
 */
 
 #include <iostream>
 
-template<typename T>
+template <typename T>
 void Merge(T arr[], int start, int mid, int end)
 {
   int i, j, k;
   int n1 = mid - start + 1;
   int n2 = end - mid;
 
-  T leftArray[n1], rightArray[n2];
+  T *leftArray, *rightArray;
+  leftArray = new T[n1];
+  rightArray = new T[n2];
 
   // Copy arr[] into left and right array to perform merge sort
   for (i = 0; i < n1; i++)
@@ -67,9 +69,11 @@ void Merge(T arr[], int start, int mid, int end)
     j++;
     k++;
   }
+  delete[] leftArray;
+  delete[] rightArray;
 }
 
-template<typename T>
+template <typename T>
 void mergeSort(T arr[], int start, int end)
 {
   if (start < end)
@@ -83,31 +87,31 @@ void mergeSort(T arr[], int start, int end)
 }
 
 //To test the array
-template<typename T>
+template <typename T>
 void printArray(T A[], int size)
 {
-    int i;
-    for (i=0; i < size; i++)
-        std::cout<<A[i]<<"  ";
-    std::cout<<"\n";
+  int i;
+  for (i = 0; i < size; i++)
+    std::cout << A[i] << "  ";
+  std::cout << "\n";
 }
 
 // Test driver function
 int main()
 {
-    int arr2[] = {12, 11, 13, 5, 6, 7,100,232};
-    char arr3[]={'s','d','g','r','j','o','p','t'};
-    std::string arr[]={"ddd","aaac","bbb","aaas"};
+  int arr2[] = {12, 11, 13, 5, 6, 7, 100, 232};
+  char arr3[] = {'s', 'd', 'g', 'r', 'j', 'o', 'p', 't'};
+  std::string arr[] = {"ddd", "aaac", "bbb", "aaas"};
 
-    int arr_size = sizeof(arr)/sizeof(arr[0]);
+  int arr_size = sizeof(arr) / sizeof(arr[0]);
 
-    std::cout<<"Given array is \n";
-    printArray<std::string>(arr, arr_size);
+  std::cout << "Given array is \n";
+  printArray<std::string>(arr, arr_size);
 
-    mergeSort<std::string>(arr, 0, arr_size - 1);
+  mergeSort<std::string>(arr, 0, arr_size - 1);
 
-    std::cout<<"\nSorted array is \n";
-    printArray<std::string>(arr, arr_size);
+  std::cout << "\nSorted array is \n";
+  printArray<std::string>(arr, arr_size);
 
-    return 0;
+  return 0;
 }
